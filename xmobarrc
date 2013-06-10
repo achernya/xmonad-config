@@ -1,0 +1,16 @@
+Config { font = "xft:Inconsolata-10"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = TopW L 100
+       , lowerOnStart = True
+       , commands = [ Run MultiCpu ["-p", "3", "-L","3","-H","80","--high","red","-t","<total0> <total1>"] 10
+                    , Run BatteryP ["BAT0"] ["-t", "<left>%", "-H", "50", "-n", "yellow", "-L", "20", "-l","red"] 10
+                    , Run DiskU [("/", "<free>")] [] 10
+                    , Run Memory ["-t", "<free>M"] 10
+                    , Run Date "%a %b %_d %l:%M %p" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %multicpu%  %memory%  %disku%  %battery%  <fc=#ee9a00>%date%</fc>"
+       }
