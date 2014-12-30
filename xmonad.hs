@@ -30,7 +30,7 @@ main = do
         , manageHook = (className =? "stalonetray" --> doIgnore) <+>
                        manageSpawn <+>
                        manageHook gnomeConfig
-        , terminal = "urxvt256c"
+        , terminal = "urxvt"
         -- more changes
         , keys = newKeys
         , startupHook = setWMName "LG3D"
