@@ -18,6 +18,7 @@ import XMonad.Layout.LayoutCombinators  -- provides |||
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.ICCCMFocus
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import Data.Monoid
@@ -35,6 +36,7 @@ main = do
         , keys = newKeys
         , startupHook = setWMName "LG3D"
         , layoutHook = myLayout
+        , logHook = takeTopFocus
         }
 
 myWorkspaces = map show [1..12]
