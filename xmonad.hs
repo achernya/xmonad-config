@@ -26,7 +26,7 @@ import System.IO
 
 main = do
   --sp <- mkSpawner
-  xmonad =<< xmobar defaultConfig
+  xmonad =<< xmobar gnomeConfig
         { modMask = mod4Mask -- Use Super instead of Alt
         , manageHook = (className =? "stalonetray" --> doIgnore) <+>
                        manageSpawn <+>
@@ -34,7 +34,6 @@ main = do
         , terminal = "urxvt"
         -- more changes
         , keys = newKeys
-        , startupHook = setWMName "LG3D"
         , layoutHook = myLayout
         , logHook = takeTopFocus
         }
@@ -89,5 +88,4 @@ myLayout = tiled ||| Mirror tiled ||| threecol ||| Full
 --        tiled     = smartBorders (ResizableTall 1 (2/100) (1/2) [])
 --        reflectTiled = (reflectHoriz tiled)
 --        full              = noBorders Full
-                                     
-    
+
