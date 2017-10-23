@@ -44,8 +44,10 @@ newKeys x = M.union (M.fromList (myKeys x)) (keys gnomeConfig x)
 
 myKeys x =
         [
+	-- Lock screen
+	  ((controlMask .|. mod1Mask, xK_l), spawn "gnome-screensaver-command -l")
         -- Gnome/Compiz style keybindings
-          ((mod1Mask, xK_Tab), windows W.focusDown)
+        , ((mod1Mask, xK_Tab), windows W.focusDown)
         , ((mod1Mask .|. shiftMask, xK_Tab), windows W.focusUp)
         , ((mod1Mask, xK_F4), kill)
         -- Launcher
