@@ -36,6 +36,7 @@ main = do
         , keys = newKeys
         , layoutHook = myLayout
         , logHook = takeTopFocus
+	, startupHook = spawn "taffybar"
         }
 
 myWorkspaces = map show [1..12]
@@ -45,7 +46,7 @@ newKeys x = M.union (M.fromList (myKeys x)) (keys gnomeConfig x)
 myKeys x =
         [
 	-- Lock screen
-	  ((controlMask .|. mod1Mask, xK_l), spawn "gnome-screensaver-command -l")
+	  ((controlMask .|. mod1Mask, xK_l), spawn "xscreensaver-command -lock")
         -- Gnome/Compiz style keybindings
         , ((mod1Mask, xK_Tab), windows W.focusDown)
         , ((mod1Mask .|. shiftMask, xK_Tab), windows W.focusUp)

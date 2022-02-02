@@ -1,9 +1,11 @@
-#!/bin/sh
-/usr/bin/stalonetray -bg '#000000' -i 8 -geometry 3x1+670+0 --kludges=force_icons_size &
-/usr/bin/nm-applet &
-/usr/bin/krb5-auth-dialog &
+xrandr --dpi 144
+autorandr --change
+xscreensaver -nosplash&
+setxkbmap -option ctrl:nocaps
+xset r rate 500 30
+xsetroot -cursor_name left_ptr
+trayer --edge top --align center --SetDockType true --SetPartialStrut true --monitor primary --widthtype request --transparent true --tint 0x0&
+nm-applet&
+flameshot&
 
-/usr/libexec/gnome-settings-daemon &
-/usr/bin/gnome-screensaver &
-
-exec xmonad
+exec bash --login -c "exec ssh-agent xmonad"
